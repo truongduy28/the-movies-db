@@ -1,0 +1,15 @@
+.movies-container {
+    padding: 0px 10%;
+    .title {
+        padding: 0px;
+        margin: 30px 0px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+    .movies {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
