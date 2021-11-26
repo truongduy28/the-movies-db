@@ -34,3 +34,13 @@ code {
     background: rgb(3, 37, 65);
     color: #fff
 }
+
+.btn {
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(3, 37, 65);
+}

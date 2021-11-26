@@ -20,8 +20,9 @@ const App = () => {
                 <Banner />
                 <Content />
               </Route>
-              <Route path="/movie-details/:id">
+              <Route path="/movie/:id">
                 <Details />
+                <Content />
               </Route>
               <Route></Route>
             </Switch>

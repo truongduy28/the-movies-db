@@ -1,0 +1,26 @@
+.footer-container {
+    border-top: 50px solid #fff;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px 20%;
+    flex-wrap: wrap;
+    .footer-item {
+        width: max-content; // text-align: center;
+        // margin: 0px 10px;
+        // background: white;
+        ul {
+            li:first-child {
+                font-size: 1.3em;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            li {
+                line-height: 1.5em;
+                font-weight: 200;
+            }
+        }
+    }
+    .footer-img {
+        width: 23%;
+    }
+}

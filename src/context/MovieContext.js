@@ -8,11 +8,55 @@ const MovieContextProvider = ({ children }) => {
   const FUTURE_API = ` https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
   const IMG_PATH = `https://image.tmdb.org/t/p/original/`;
   const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&include_adult=false&query=`;
+  const VIDEO_API = `http://api.themoviedb.org/3/movie/550/videos?api_key=${API_KEY}`;
 
   const [movies, setMovies] = useState([]);
   const [banner, setBanner] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [details, setDetails] = useState("");
+  const [idMovie, setIdMovie] = useState("");
+  const [trailer, setTrailer] = useState([]);
+  const [showTrailer, setShowTrailer] = useState(false);
+
+  const handleShowTrailer = () => {
+    setShowTrailer(showTrailer ? false : true);
+  };
+  const handleWatchNow = () => {
+    alert(
+      "Temporarily unable to watch the movie, you can only refer to the trailer and the details of the movie "
+    );
+  };
+  const handleGetIdMovie = (id) => {
+    setIdMovie(id);
+  };
+
+  useEffect(() => {
+    const getTrailerMovie = (idMovie) => {
+      const getTrailer = async () => {
+        const res = await axios.get(
+          `http://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=${API_KEY}`
+        );
+        const dataTerm = res && res.data ? res.data.results[0] : [];
+        setTrailer(dataTerm);
+      };
+      getTrailer();
+    };
+    getTrailerMovie(idMovie);
+  }, [idMovie]);
+
+  useEffect(() => {
+    const getDetailMovie = (idMovie) => {
+      const getDetails = async () => {
+        const res = await axios.get(
+          `https://api.themoviedb.org/3/movie/${idMovie}?api_key=${API_KEY}`
+        );
+        const dataTerm = res && res.data ? res.data : [];
+        setDetails(dataTerm);
+      };
+      getDetails();
+    };
+    getDetailMovie(idMovie);
+  }, [idMovie]);
 
   const handleChangeSearch = (e) => {
     setSearchValue(e.target.value);
@@ -31,14 +75,6 @@ const MovieContextProvider = ({ children }) => {
     getMoviesFunc(FUTURE_API, setMovies, false);
   }, []);
 
-  const getDetails = async (id) => {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
-    );
-    const dataTerm = res && res.data ? res.data : [];
-    console.log(dataTerm);
-  };
-
   const getMoviesFunc = (api, setState, getOne) => {
     const getMovies = async () => {
       const res = await axios.get(api);
@@ -51,14 +87,23 @@ const MovieContextProvider = ({ children }) => {
     };
     getMovies();
   };
-
+  const handleIncomplete = () => {
+    alert("The function will be completed as soon as possible, thanks!");
+  };
   const valueMoviesContext = {
     movies,
     IMG_PATH,
     banner,
     handleChangeSearch,
     handleSearchMovie,
-    getDetails,
+    details,
+    handleGetIdMovie,
+    idMovie,
+    trailer,
+    handleShowTrailer,
+    showTrailer,
+    handleIncomplete,
+    handleWatchNow,
   };
   return (
     <>

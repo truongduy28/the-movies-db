@@ -1,0 +1,164 @@
+@import "../../scss/variables";
+.details-movie-container {
+    margin-top: 80px;
+    .details-title {
+        width: 100%;
+        background-color: #fff;
+        color: rgba(0, 0, 0, 0.95);
+        padding: 10px 13%;
+        p {
+            width: max-content;
+            font-size: 1.2em;
+            font-weight: 100;
+        }
+        p:hover {
+            cursor: pointer;
+        }
+    }
+    .details-movie {
+        position: relative;
+        height: 90vh;
+        .details-movie-banner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .details-movie-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 11;
+        }
+        .details-movie-template {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            bottom: 10%;
+            right: 10%;
+            // transform: translate(-50%, -50%);
+            z-index: 12;
+            // background: black;
+            .content-img {
+                width: 25%;
+                height: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .content-text {
+                margin-left: 20px;
+                width: 70%;
+                h1 {
+                    line-height: 1.2em;
+                    span {
+                        font-size: 0.5em;
+                        font-weight: 100;
+                        border: 2px solid $color-dark-blue;
+                        border-radius: 10px;
+                        padding: 5px;
+                        width: max-content;
+                        height: max-content;
+                    }
+                }
+                .content-text-genres {
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    .list {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .genre {
+                            margin-right: 10px;
+                            background: $color-dark-blue;
+                            border-radius: 10px;
+                            width: max-content;
+                            padding: 3px 10px 5px;
+                            height: max-content;
+                        }
+                    }
+                }
+                p.content-text-tagline {
+                    font-weight: 100;
+                    font-size: 0.9em;
+                    padding: 0px 0px 15px;
+                }
+                p {
+                    span {
+                        line-height: 1.5em;
+                        text-transform: uppercase;
+                    }
+                }
+                .content-text-vote {
+                    margin: 10px 0px;
+                    width: 35%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .vote-icon {
+                        width: 40px;
+                        height: 40px;
+                        border: 4px solid #04a000;
+                        display: flex;
+                        border-radius: 50%;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+                    }
+                    .vote-icon::after {
+                        content: "votes";
+                        position: absolute;
+                        right: -150%;
+                    }
+                    .vote-views {
+                        font-weight: 100;
+                        border: 2px solid $color-dark-blue;
+                        border-radius: 10px;
+                        padding: 5px;
+                        width: max-content;
+                        height: max-content;
+                    }
+                }
+                .content-text-overview {
+                    margin: 10px 0px;
+                    p {
+                        font-size: 1.2em;
+                        font-weight: bold;
+                    }
+                    span {
+                        font-weight: 100;
+                    }
+                }
+                .btn-group {
+                    margin: 15px 0px;
+                    display: flex;
+                    .btn {
+                        background-color: $color-dark-blue;
+                        padding: 12px 30px;
+                        border-radius: 10px;
+                        margin: 10px 30px 10px 0px;
+                        box-shadow: 2px 3px 20px rgb(114, 114, 114);
+                    }
+                    .btn:hover {
+                        background: #fff;
+                        color: $color-dark-blue;
+                        box-shadow: 2px 3px 20px rgb(0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}

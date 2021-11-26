@@ -42,14 +42,14 @@ const Banner = () => {
             <div className="btn-group">
               <div className="btn-group">
                 <div className="btn btn-watch">
-                  <Link to={`/movie-details/${banner.id}`}>
+                  <Link to={`/movie/${banner.id}`}>
                     WATCH NOW <i class="fas fa-play"></i>
                   </Link>
                 </div>
                 <div className="btn btn-learn">
-                  <a href="">
+                  <Link to="{`/movie-details/${banner.id}`}">
                     LEARN MORE <i class="fas fa-info-circle"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
